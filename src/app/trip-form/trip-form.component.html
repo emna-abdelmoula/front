@@ -1,0 +1,39 @@
+<!-- trip-form.component.html -->
+<form (ngSubmit)="onSubmit()" [formGroup]="tripForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category_name">
+        <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Subcategory</mat-label>
+      <mat-select formControlName="subcategory_name">
+        <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory">{{ subcategory }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <mat-select formControlName="price">
+        <mat-option *ngFor="let price of prices" [value]="price">{{ price }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Duration (days)</mat-label>
+      <input matInput type="number" formControlName="duration" required>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Get Recommendations</button>
+  </form>
+  
+  <div *ngIf="recommendations?.length">
+    <h3>Recommended Destinations</h3>
+    <ul>
+      <li *ngFor="let recommendation of recommendations">
+        {{ recommendation.name }} - {{ recommendation.address }}
+      </li>
+    </ul>
+  </div>
