@@ -1,7 +1,7 @@
   
   import { HttpClient } from '@angular/common/http';
   import { Component, OnInit } from '@angular/core';
-  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
   import { RecommendationService } from 'src/Services/recommendation.service';
   
   @Component({
@@ -23,7 +23,8 @@
         category_name: ['', Validators.required],
         subcategory_name: ['', Validators.required],
         price: ['', Validators.required],
-        duration: ['', [Validators.required, Validators.min(1)]]
+        dateDebut: ['', Validators.required],
+        dateFin: ['', Validators.required],
       });
   
       // Fetch categories on initialization
@@ -71,12 +72,28 @@
       );
     }
   
+    // onSubmit(): void {
+    //   if (this.tripForm.valid) {
+    //     const formValues = this.tripForm.value;
+    //     this.getRecommendations(formValues.subcategory_name, formValues.price, formValues.duration);
+    //   }
+    // }
     onSubmit(): void {
       if (this.tripForm.valid) {
         const formValues = this.tripForm.value;
-        this.getRecommendations(formValues.subcategory_name, formValues.price, formValues.duration);
+        const duration = this.calculateDuration(formValues.dateDebut, formValues.dateFin);
+        this.getRecommendations(formValues.subcategory_name, formValues.price, duration);
       }
     }
+  
+    calculateDuration(startDate: string, endDate: string): number {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      const timeDiff = end.getTime() - start.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      return daysDiff;
+    }
+  
   
     getRecommendations(subcategory_name: string, price: string, duration: number): void {
       this.recommendationService.getRecommendations(subcategory_name, price, duration).subscribe(
@@ -85,4 +102,5 @@
       );
     }
   }
+  //hi
   
