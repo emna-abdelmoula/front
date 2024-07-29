@@ -2,7 +2,9 @@
     <h3>Recommended Destinations</h3>
     <ul>
       <li *ngFor="let recommendation of recommendations; let i = index">
-        Day {{ i + 1 }}: {{ recommendation.name }}
+        <h4>Day {{ i + 1 }}: {{ recommendation.name }}</h4>
+        <img [src]="recommendation.Photo" alt="{{ recommendation.name }}" style="max-width: 200px;">
+        <p>Price: {{ recommendation.Price }}</p>
       </li>
     </ul>
   </div>

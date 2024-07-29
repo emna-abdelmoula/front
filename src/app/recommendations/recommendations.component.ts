@@ -13,6 +13,13 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.recommendations = JSON.parse(params['data']);
+      if (params['data']) {
+        try {
+          this.recommendations = JSON.parse(decodeURIComponent(params['data']));
+        } catch (error) {
+          console.error('Error parsing recommendations data', error);
+        }
+      }
     });
-  }}
+  }
+}
