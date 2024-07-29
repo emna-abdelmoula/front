@@ -27,6 +27,7 @@ import { RegisterComponent } from './register/register.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { TripFormComponent } from './trip-form/trip-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     RegisterComponent,
     LandingpageComponent,
-    TripFormComponent
+    TripFormComponent,
+    RecommendationsComponent
   ],
   imports: [
     BrowserModule,

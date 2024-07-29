@@ -2,6 +2,7 @@
   import { HttpClient } from '@angular/common/http';
   import { Component, OnInit } from '@angular/core';
   import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
   import { RecommendationService } from 'src/Services/recommendation.service';
   
   @Component({
@@ -16,7 +17,7 @@
     subcategories: string[] = [];
     prices: string[] = [];
   
-    constructor(private fb: FormBuilder, private recommendationService: RecommendationService) { }
+    constructor(private fb: FormBuilder, private recommendationService: RecommendationService,private router: Router) { }
   
     ngOnInit(): void {
       this.tripForm = this.fb.group({
@@ -78,14 +79,22 @@
     //     this.getRecommendations(formValues.subcategory_name, formValues.price, formValues.duration);
     //   }
     // }
+
     onSubmit(): void {
       if (this.tripForm.valid) {
         const formValues = this.tripForm.value;
         const duration = this.calculateDuration(formValues.dateDebut, formValues.dateFin);
-        this.getRecommendations(formValues.subcategory_name, formValues.price, duration);
+        this.recommendationService.getRecommendations(formValues.subcategory_name, formValues.price, duration).subscribe(
+          (data: any[]) => {
+            // Navigate to recommendations page with data
+            this.router.navigate(['/recommendations'], {
+              queryParams: { data: JSON.stringify(data) }
+            });
+          },
+          error => console.error('There was an error!', error)
+        );
       }
     }
-  
     calculateDuration(startDate: string, endDate: string): number {
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -102,5 +111,5 @@
       );
     }
   }
-  //hi
+ 
   

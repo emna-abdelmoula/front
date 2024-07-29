@@ -5,12 +5,19 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { TripFormComponent } from './trip-form/trip-form.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 const routes: Routes = [
 
   {
     path:'home',
     component:HomeComponent
+  },
+  
+  
+  {
+    path:'recommendations',
+    component:RecommendationsComponent
   },
   {
     path:'landingpage',

@@ -1,0 +1,9 @@
+<div class="recommendations">
+    <h3>Recommended Destinations</h3>
+    <ul>
+      <li *ngFor="let recommendation of recommendations; let i = index">
+        Day {{ i + 1 }}: {{ recommendation.name }}
+      </li>
+    </ul>
+  </div>
+  
