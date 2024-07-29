@@ -1,0 +1,17 @@
+<div class="recommendations">
+    <h3>Recommended Destinations</h3>
+    <div class="card-container">
+      <mat-card *ngFor="let recommendation of recommendations; let i = index" class="destination-card">
+        <mat-card-header>
+          <mat-card-title>{{ recommendation.name }}</mat-card-title>
+          <mat-card-subtitle>{{ recommendation.category_name }} - {{ recommendation.subcategory_name }}</mat-card-subtitle>
+          <mat-icon (click)="toggleDetails(i)" class="more-details-icon">info</mat-icon>
+        </mat-card-header>
+        <img *ngIf="expandedCardIndex === i" mat-card-image [src]="recommendations[i].Photo" alt="{{ recommendations[i].name }}">
+        <mat-card-content *ngIf="expandedCardIndex === i">
+          <p><strong>Price:</strong> {{ recommendations[i].Price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

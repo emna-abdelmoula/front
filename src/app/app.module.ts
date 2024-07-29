@@ -19,18 +19,25 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatSortModule } from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { TripFormComponent } from './trip-form/trip-form.component';
+import { MatSelectModule } from '@angular/material/select';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingpageComponent,
+    TripFormComponent,
+    RecommendationsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +61,11 @@ import { RegisterComponent } from './register/register.component';
     FormsModule, 
     HttpClientModule ,
     ReactiveFormsModule,
+    MatSelectModule,
+    MatOptionModule,
+ 
+   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

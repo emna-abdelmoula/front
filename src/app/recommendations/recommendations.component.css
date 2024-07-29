@@ -1,0 +1,27 @@
+.recommendations {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .destination-card {
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .destination-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .more-details-icon {
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
